@@ -50,7 +50,7 @@ def main():
     for st in sts:
         print(st.descr)
 
-    results = session.query(Stickers).filter(Stickers.__ts_vector__.match('die')).all()
+    results = session.query(Stickers).filter(Stickers.__ts_vector__.match('умри')).all()
     for st in results:
         print(st.descr)
 
