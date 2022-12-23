@@ -10,7 +10,8 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 
 
-db = sa.create_engine('postgresql+psycopg2://admin:admin@127.0.0.1:5432/db_stickers')
+db = sa.create_engine('postgresql+psycopg2://postgres:docker@localhost:6632/db_stickers')
+# db = sa.create_engine('postgresql://docker:docker@postgres:6632/db_stickers?connect_timeout=5&sslmode=disable')
 # ensure this is the correct path for the sqlite file.
 
 base = declarative_base()
@@ -53,7 +54,6 @@ def main():
     results = session.query(Stickers).filter(Stickers.__ts_vector__.match('умри')).all()
     for st in results:
         print(st.descr)
-
 
 
 if __name__ == "__main__":
